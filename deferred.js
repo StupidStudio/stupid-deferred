@@ -1,15 +1,15 @@
-var Event = require('stupid-event');
-
 /**
  * @fileoverview Simple deferred lib.
  * @author david@stupid-studio.com (David Adalberth Andersen)
  */
 
+/** Import the Event system */
+var Event = require('stupid-event');
+
 /**
  * Deferred
  * @constructor
  */
-
 function Deferred(opts){
  	/**
 	 * @define {object} Collection of public methods.
