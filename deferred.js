@@ -122,15 +122,18 @@ function Deferred(opts){
 	 * @example def.notify(args)
 	 */
 	function resolve(){
-		event.trigger('resolve', arguments);
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('resolve', args);
 	}
 
 	function reject(){
-		event.trigger('reject', arguments);	
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('reject', args);	
 	}
 
 	function notify(){
-		event.trigger('notify', arguments);		
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('notify', args);		
 	}
 
 	/**

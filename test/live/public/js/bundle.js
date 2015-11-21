@@ -123,16 +123,18 @@ function Deferred(opts){
 	 * @example def.notify(args)
 	 */
 	function resolve(){
-		event.trigger('resolve', arguments);
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('resolve', args);
 	}
 
 	function reject(){
-		event.trigger('reject', arguments);	
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('reject', args);	
 	}
 
 	function notify(){
-		console.log('notify()');
-		event.trigger('notify', arguments);		
+		var args = Array.prototype.slice.call(arguments);
+		event.trigger('notify', args);		
 	}
 
 	/**
@@ -253,6 +255,9 @@ function Event(opts){
 		 * @define {array} takes the arguments and removes the first param
 		 */
 		var args = Array.prototype.slice.call(arguments).slice(1);
+		console.log(arguments);
+		/** If first argument is an array, pass it as argument */
+		if(arguments.length === 2 && arguments[1].constructor == Array) args = arguments[1];
 		
 		if(events){
 			/** Trigger the events by the current key */
@@ -285,17 +290,40 @@ function Event(opts){
 module.exports = Event;
 },{}],3:[function(require,module,exports){
 var Deferred = require('../../deferred');
+// function test(){
+// 	var def = Deferred();
+// 	def.resolve();
+// 	def.reject();
+// 	return def.promise;
+// }
+// test().success(function(){
+// 	console.log("success");
+// }).error(function(){
+// 	console.log("error");
+// }).notify(function(){
+// 	console.log("notify");
+// });
+var arg1 = "arg1";
+var arg2 = "arg2";
+var arg3 = "arg3";
 function test(){
 	var def = Deferred();
-	def.resolve();
-	def.reject();
+	setTimeout(function(){
+		def.resolve(arg1, "test1");
+	}, 1);
+	setTimeout(function(){
+		def.reject(arg2, "test2");
+	}, 2);
+	setTimeout(function(){
+		def.notify(arg3, "test3"); 
+	}, 3);
 	return def.promise;
 }
-test().success(function(){
-	console.log("success");
-}).error(function(){
-	console.log("error");
-}).notify(function(){
-	console.log("notify");
+test().success(function(param, param2){
+	console.log("success", arg1 === param, "test1" === param2);
+}).error(function(param){
+	// console.log("error", param, arg2);
+}).notify(function(param){
+	// console.log("notify", param, arg3);
 });
 },{"../../deferred":1}]},{},[3]);

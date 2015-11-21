@@ -28,8 +28,45 @@ test('Deferred is being: success, reject, notify x 2', function(t){
 	});
 });
 
-test('Deferred is chainable (working resolve, reject, notify)', function(t){
+
+test('Params is pass correctly', function(t){
 	t.plan(5);
+	var arg1 = "arg1";
+	var arg2 = "arg2";
+	var arg3 = "arg3";
+	var arg4 = "arg4";
+	function test(){
+		var def = Deferred();
+		setTimeout(function(){
+			def.resolve(arg1, arg4);
+		}, 1);
+		setTimeout(function(){
+			def.reject(arg2);
+		}, 2);
+		setTimeout(function(){
+			def.notify(arg3);
+		}, 3);
+		setTimeout(function(){
+			def.notify(arg3);
+		}, 4);
+		return def.promise;
+	}
+	test().success(function(param, param2){
+		t.equal(param, arg1);
+		t.equal(param2, arg4);
+	}).error(function(param){
+		t.equal(param, arg2);
+	}).notify(function(param){
+		if(param){
+			t.equal(param, arg3);
+		}else{
+			t.ok(true, "is working without passing params");
+		}
+	});
+});
+
+test('Deferred is chainable (working resolve, reject, notify)', function(t){
+	t.plan(6);
 	function test(){
 		var def = Deferred();
 		setTimeout(function(){
@@ -52,6 +89,8 @@ test('Deferred is chainable (working resolve, reject, notify)', function(t){
 		// notify
 		t.ok(true);
 	}).then(function(){
+		t.ok(true);
+	}, function(){
 		t.ok(true);
 	});
 });
