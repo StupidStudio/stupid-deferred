@@ -1,0 +1,35 @@
+{
+  "name": "stupid-deferred",
+  "version": "1.0.0",
+  "description": "A simple deferred lib",
+  "main": "deferred.js",
+  "directories": {
+    "test": "tap-prettify test/*.js"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "tap-prettify": "0.0.2",
+    "tape": "^4.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
+    },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StupidStudio/stupid-deferred.git"
+  },
+  "author": "David Adalberth Andersen <david@stupid-studio.com> (http://stupid-studio.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StupidStudio/stupid-deferred/issues"
+  },
+  "homepage": "https://github.com/StupidStudio/stupid-deferred#readme",
+  "dependencies": {
+    "stupid-event": "^1.0.1"
+  }
+}
