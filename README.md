@@ -1,5 +1,5 @@
-# Stupid Deferred
-A simple deferred lib to be used in a browserify workflow.
+# Stupid Deferred 
+A simple deferred lib to be used in a browserify workflow. (Doesn't have all promise features, and is very custom).
 
 ## Usage
 
