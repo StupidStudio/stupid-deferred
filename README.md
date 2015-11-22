@@ -1,4 +1,4 @@
-# Stupid Event
+# Stupid Deferred
 A simple deferred lib to be used in a browserify workflow.
 
 ## Usage
