@@ -1,6 +1,6 @@
 {
   "name": "stupid-deferred",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple deferred lib",
   "main": "./deferred.js",
   "scripts": {
