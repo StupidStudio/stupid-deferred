@@ -47,7 +47,7 @@ test('Params is pass correctly', function(t){
 			def.notify(arg3);
 		}, 3);
 		setTimeout(function(){
-			def.notify(arg3);
+			def.notify();
 		}, 4);
 		return def.promise;
 	}
@@ -60,12 +60,12 @@ test('Params is pass correctly', function(t){
 		if(param){
 			t.equal(param, arg3);
 		}else{
-			t.ok(true, "is working without passing params");
+			t.notEqual(param, arg3);
 		}
 	});
 });
 
-test('Deferred is chainable (working resolve, reject, notify)', function(t){
+test('Deferred is chainable (resolve, reject, notify)', function(t){
 	t.plan(6);
 	function test(){
 		var def = Deferred();
@@ -89,8 +89,10 @@ test('Deferred is chainable (working resolve, reject, notify)', function(t){
 		// notify
 		t.ok(true);
 	}).then(function(){
+		// error
 		t.ok(true);
 	}, function(){
+		// notify
 		t.ok(true);
 	});
 });
